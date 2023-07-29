@@ -1,12 +1,14 @@
 #include "lists.h"
+#include <stdio.h>
 
 /******************START*************************/
 /**
- * add_node - adds a nod at start  of a list
- *@head: shows to the head of the list
- *@str: string to be added as node to list
+ *add_node: This will add a nod at start  of a list.
+ *@head: shows/opens the head of the list.
+ *@str: string to be added as node to list.
  *
- * Return:new element/ NULL if element fails
+ * Return:new element/ NULL if element fails.
+ *
  * ALX PROJECTS
 */
 list_t *add_node(list_t **head, const char *str)
@@ -33,7 +35,10 @@ list_t *add_node(list_t **head, const char *str)
 	added->len = len;
 	*head = added;
 
-	/**return *head **/
+	/**
+	 * This should now return head (*head)
+	 * If the code is successfull
+	 */
 
 	return (*head);
 }
