@@ -8,7 +8,7 @@
  *
  */
 
-void premain_func(void)
+void __attribute__((constractor)) premain_func()
 {
 	printf("You're beat! and yet, you must allow,\n");
 	printf("I bore my house upon my back!\n");
