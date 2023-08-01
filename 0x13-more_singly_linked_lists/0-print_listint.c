@@ -1,29 +1,30 @@
 #include "lists.h"
 
-/**************START***************/
-
 /**
- * print_listint - printsall the elements in a linked list
+ * print_listint - prints-all elements of a linked  list
  *
- * @h: pointer: shows the first node.
+ * @h: pointer: shows to first node
  *
- * Return: returns the No of nodeds in the list_t
- */
+ * Return: Returns the No. of nodes in list
+*/
 size_t print_listint(const listint_t *h)
 {
 	const listint_t *pointer = h;
-	size_t nod = 0;
+	size_t nod = 1;
 
-	if (pointer == NULL) //empty list
+	/*empty_list*/
+	if (pointer == NULL)
 		return (0);
 
-	/***Do.....While loop****/
-	do {
+	while (pointer->next != NULL)
+	{
 		printf("%d\n", pointer->n);
-		node++;
 		pointer = pointer->next;
-	} while (pointer != NULL);
+		nod++;
+	}
+
+	printf("%d\n", pointer->n);
 
 	return (nod);
 }
-/**************STOP*****************/
+/***************************************STOPR****************************/
