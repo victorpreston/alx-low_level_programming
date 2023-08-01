@@ -19,11 +19,11 @@ void free_listint2(listint_t **head)
 	if (nod_c == NULL)
 		return;
 
-	while (*head)
+	while (*nod_c)
 	{
-		pointer = (*head)->next;
-		free(*head);
-		*head = pointer;
+		pointer = (nod_c)->next;
+		free(nod_c);
+		nod_c = pointer;
 	}
 
 	nod_c = NULL;
