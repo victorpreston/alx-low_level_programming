@@ -15,12 +15,12 @@
 void free_listint(listint_t *head)
 {
 	listint_t *nod_c;
-	listint_t *pointer = head;
+	/**Loop**/
 
 	do {
-		nod_c = pointer->next;
-		free(pointer);
-		pointer = nod_c;
-	} while (pointer != NULL);
+		nod_c = head->next;
+		free(head);
+		head = nod_c;
+	} while (head != NULL);
 }
 /***********STOP***********/
