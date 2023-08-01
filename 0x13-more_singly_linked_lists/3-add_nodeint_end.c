@@ -14,19 +14,37 @@
  */
 listint_t *add_nodeint_end(listint_t **head, const int n)
 {
+	/**
+	 * nod_s = new node.
+	 * pointer = *head.
+	 */
+	listint_t *nod_s;
 	listint_t *pointer = *head;
-	/**Initialize new node**/
-	listint_t *nod_n;
 
-	nod_n = malloc(sizeof(listint_t));
-	if (nod_n == NULL)
+	nod_s = malloc(sizeof(listint_t));
+
+	/**check for empty list**/
+	if (nod_s != NULL)
+	{
+		nod_s->n = n;
+		nod_s->next = NULL;
+	}
+	else
 		return (NULL);
-	nod_n->n = n;
-	nod_n->next = NULL;
+	if (pointer != NULL)
+	{
+		for (; pointer->next != NULL; pointer = pointer->next)
+		{
+			/**Loop to find the last node**/
+		}
+		nod_s->next = nod_s;
+	}
 
-	pointer != NULL ? (void)(while (pointer->next != NULL) pointer = pointer->next) : (*head = nod_n);
-	pointer != NULL ? (pointer->next = nod_n) : (*head = nod_n);
-
-	return (nod_n);
+	/**set head to new node**/
+	else
+	{
+		*head = nod_s;
+	}
+	return (nod_s);
 }
 /*********STOP********/
