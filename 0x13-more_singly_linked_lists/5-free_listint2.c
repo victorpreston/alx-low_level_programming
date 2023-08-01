@@ -10,22 +10,22 @@
  *
  * ALX PROJECTS
  */
+
 void free_listint2(listint_t **head)
 {
-	listint_t pointer;
-	listint_t **nod_c = head;
+	listint_t *pointer;
+	listint_t *nod_c;
 
-	/**Check whether NULL**/
-	if (nod_c == NULL)
-		return;
-
-	while (*nod_c)
+	if (head != NULL)
 	{
-		pointer = (nod_c)->next;
-		free(nod_c);
-		nod_c = pointer;
-	}
+		pointer = *head;
+		while ((nod_c = pointer) != NULL)
 
-	nod_c = NULL;
+			pointer = pointer->next;
+			free(nod_c);
+		}
+
+		*head = NULL;
+	}
 }
 /**********STOP***********/
