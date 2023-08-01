@@ -10,7 +10,7 @@
 size_t print_listint(const listint_t *h)
 {
 	const listint_t *pointer = h;
-	size_t nod = 1;
+	size_t nod = 0;
 
 	/*empty_list*/
 	if (pointer == NULL)
