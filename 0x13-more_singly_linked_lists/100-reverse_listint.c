@@ -9,21 +9,25 @@
  *
  * Return:pointer-shows the first node of reversed list.
  */
-
-
 listint_t *reverse_listint(listint_t **head)
 {
-	listint_t *prevv = NULL, *current = *head, *n_node;
+	listint_t *n_node, *prevv;
 
-	/***Loop***/
-	while (current != NULL)
+	if (head == NULL || *head == NULL)
+		return (NULL);
+
+	prevv = NULL;/**Initialize previous node to (0)**/
+
+	while ((*head)->next != NULL)
 	{
-		n_node = current->next;
-		current->next = prevv;
-		prevv = current;
-		current n_node;
+		n_node = (*head)->next;
+		(*head)->next = prevv;
+		prevv = *head;
+		*head = n_node;
 	}
 
-	*head = prevv; /*Update the head*/
+	(*head)->next = prevv;
+
 	return (*head);
 }
+/***************STOP**************/
