@@ -1,6 +1,6 @@
 #include "lists.h"
-#include <std.io>
-#include <stdlib.>
+#include <stdio.h>
+#include <stdlib.h>
 
 
 /******START*****/
