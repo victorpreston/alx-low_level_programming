@@ -1,4 +1,5 @@
 #include "lists.h"
+#include <stdlib.h>
 
 /***********START**********/
 /**
@@ -19,10 +20,11 @@ void free_listint2(listint_t **head)
 	if (head != NULL)
 	{
 		pointer = *head;
-		while ((nod_c = pointer) != NULL)
-
-			pointer = pointer->next;
-			free(nod_c);
+		while (pointer != NULL)
+		{
+			nod_c = pointer->next;
+			free(pointer);
+			pointer = nod_c;
 		}
 
 		*head = NULL;
