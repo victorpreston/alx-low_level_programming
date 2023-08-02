@@ -14,18 +14,17 @@
 
 int pop_listint(listint_t **head)
 {
-	listint_t *nod_c;
-	int nod_cont;
+	listint_t *node_to_delete;
+	int node_data;
 
 	if (*head == NULL)
 		return (0);
-
-	nod_c = *head;
-	nod_cont = (*head)->n;
+	node_to_delete = *head;
+	node_data = (*head)->n;
 	*head = (*head)->next;
 
-	free(nod_c);
+	free(node_to_delete);
 
-	return (nod_cont);
+	return (node_data);
 }
 /************STOP****************/
