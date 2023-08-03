@@ -28,7 +28,8 @@ int get_bit(unsigned long int n, unsigned int index)
 		return (-1);
 	/*Error, Index out of range*/
 
-	unsigned long int mask = 1UL << tag;
-	return ((number & mask) ? 1 : 0);
+	if ((number & (1 << tag)) == 0)
+		return (0);
+	return (1);
 }
 /******************STOP*******************/
