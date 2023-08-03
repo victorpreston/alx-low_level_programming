@@ -16,17 +16,18 @@
 
 unsigned int binary_to_uint(const char *b)
 {
-	int i;
+	const char *bit = b;
+	int y;
 	unsigned int re_sult = 0;
 
-	if (!b)
+	if (!bit)
 		return (0);
 
-	for (i = 0; b[i]; i++)
+	for (y = 0; bit[y]; y++)
 	{
-		if (b[i] < '0' || b[i] > '1')
+		if (bit[y] < '0' || bit[y] > '1')
 			return (0);
-		re_sult = 2 * re_sult + (b[i] - '0');
+		re_sult = 2 * re_sult + (bit[y] - '0');
 	}
 
 	return (re_sult);
