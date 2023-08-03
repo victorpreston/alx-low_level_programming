@@ -16,26 +16,19 @@
 
 unsigned int binary_to_uint(const char *b)
 {
-	if (b == NULL)
-	{
+	int i;
+	unsigned int re_sult = 0;
+
+	if (!b)
 		return (0);
-	}
 
-	unsigned int result = 0;
-	int len = strlen(b);
-
-	for (int i = 0; i < len; i++)
+	for (i = 0; b[i]; i++)
 	{
-		if (b[i] == '0' || b[i] == '1')
-		{
-			result = (result << 1) + (b[i] - '0');
-		}
-		else
-		{
+		if (b[i] < '0' || b[i] > '1')
 			return (0);
-		}
+		re_sult = 2 * re_sult + (b[i] - '0');
 	}
 
-	return (result);
+	return (re_sult);
 }
-/*******************STOP****************/
+/*****************STOP*******************/
