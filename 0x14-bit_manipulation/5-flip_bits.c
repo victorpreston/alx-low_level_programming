@@ -17,7 +17,7 @@
 
 unsigned int flip_bits(unsigned long int n, unsigned long int m)
 {
-	unsigned long int no_flp = n^m;
+	unsigned long int no_flp = n ^ m;
 	int num_ct = 0;
 
 	/*loop*/
