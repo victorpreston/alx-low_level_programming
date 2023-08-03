@@ -29,9 +29,13 @@ int set_bit(unsigned long int *n, unsigned int index)
 	unsigned long int *number = n;
 	unsigned int tag = index;
 
-	if (tag >= (sizeof(unsigned long int) * 8)
-			return (-1);
-	*number ^= (1UL << tag);
+	if (number == NULL || (tag > (sizeof(unsigned long int) * 8) - 1))
+		return (-1);
+
+	/*Check*/
+	*number |= (1 << tag);
+
+	/*Return Success*/
 	return (1);
 }
 /******************STOP**********************/
