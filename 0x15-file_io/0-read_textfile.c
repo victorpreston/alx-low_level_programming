@@ -23,27 +23,27 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	int f_d;
 	ssize_t w_cnt;
 	ssize_t w_r;
-	char *read;
+	char *buffer;
 
 	if (filename == NULL)
 		return (0);
 	f_d = open(filename, O_RDONLY);
 	if (f_d == -1)
 		return (0);
-	read = malloc(sizeof(char) * letters);
-	if (read == NULL)
+	buffer = malloc(sizeof(char) * letters);
+	if (buffer == NULL)
 	{
-		free(read);
+		free(buffer);
 		return (0);
 	}
-	w_r = read(f_d, read, letters);
+	w_r = read(f_d, buffer, letters);
 	if (w_r == -1)
 		return (0);
-	w_cnt = write(STDOUT_FILENO, read, w_r);
+	w_cnt = write(STDOUT_FILENO, buffer, w_r);
 	if (w_cnt == -1 || w_r != w_cnt)
 		return (0);
 
-	free(read);
+	free(buffer);
 	close(f_d);
 	return (w_cnt);
 }
