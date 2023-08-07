@@ -26,30 +26,27 @@ int append_text_to_file(const char *filename, char *text_content)
 	/**Set Constants**/
 	const char *f_name = filename;
 	char *t_c = text_content;
-	int file;
-	int a_s;
-	int w_d = 0;
-	ssize_t len = 0;
+	int i;
+	int j;
+	int len = 0;
 
 	if (f_name == NULL)
 		return (-1);
-	file = open(f_name, O_APPEND | O_WRONLY);
-	if (file == -1)
-		return (-1);
+
 	if (t_c != NULL)
 	{
-		while (t_c[len] != '\0')
+		for (len = 0; t_c[len];)
 			len++;
-		a_s = write(file, t_c, len);
-		close(file);
+	}
 
-		if (a_s == -1)
-			return (-1);
-	}
-	else
-	{
-		close(file);
-	}
+	i = open(f_name, O_WRONLY | O_APPEND);
+	j = write(i, t_c, len);
+
+	if (i == -1 || j == -1)
+		return (-1);
+
+	close(i);
+
 	return (1);
 }
 /***************************START**************************/
