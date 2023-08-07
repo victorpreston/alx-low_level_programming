@@ -19,9 +19,10 @@
 
 ssize_t read_textfile(const char *filename, size_t letters)
 {
+	/****Declarations******/
 	int f_d;
-	ssize_t w_r;
 	ssize_t w_cnt;
+	ssize_t w_r;
 	char *buffer;
 
 	if (filename == NULL)
