@@ -24,20 +24,19 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	ssize_t w_cnt;
 	ssize_t w_r;
 	char *buffer;
-	ssize_t letters = w_l;
 
 	if (filename == NULL)
 		return (0);
 	f_d = open(filename, O_RDONLY);
 	if (f_d == -1)
 		return (0);
-	buffer = malloc(sizeof(char) * w_l);
+	buffer = malloc(sizeof(char) * letters);
 	if (buffer == NULL)
 	{
 		free(buffer);
 		return (0);
 	}
-	w_r = read(f_d, buffer, w_l);
+	w_r = read(f_d, buffer, letters);
 	if (w_r == -1)
 		return (0);
 	w_cnt = write(STDOUT_FILENO, buffer, w_r);
