@@ -23,6 +23,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	ssize_t w_r;
 	ssize_t w_cnt;
 	char *buffer;
+
 	if (filename == NULL)
 		return (0);
 	f_d = open(filename, O_RDONLY);
