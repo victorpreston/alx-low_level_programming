@@ -20,10 +20,8 @@
 ssize_t read_textfile(const char *filename, size_t letters)
 {
 	int f_d;
-	ssize_t total_read = 0;
-	ssize_t bytes_read;
-	ssize_t bytes_written;
-	/****set constants****/
+	ssize_t w_r;
+	ssize_t w_cnt;
 	char *buffer;
 
 	if (filename == NULL)
@@ -31,28 +29,25 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	f_d = open(filename, O_RDONLY);
 	if (f_d == -1)
 		return (0);
-
 	buffer = malloc(sizeof(char) * letters);
 	if (buffer == NULL)
 	{
-		close(f_d);
+		free(buffer);
 		return (0);
 	}
-	while ((bytes_read = read(f_d, buffer, letters)) > 0)
-	{
-		bytes_written = write(STDOUT_FILENO, buffer, (size_t) bytes_read);
-		if (bytes_written == -1 || bytes_written != bytes_read)
-		{
-			close(f_d);
-			free(buffer);
-			return (0);
-		}
-		total_read += bytes_written;
-		if (total_read >= letters)
-			break;
-	}
-	close(f_d);
+
+	w_r = read(f_d, buffer, letters);
+	if (w_r == -1)
+		return (0);
+
+	w_cnt = write(STDOUT_FILENO, buffer, w_r);
+	if (w_cnt == -1 || w_r != w_cnt)
+		return (0);
+
 	free(buffer);
-	return (total_read);
+
+	close(f_d);
+
+	return (w_cnt);
 }
-/***************************STOP****************************/
+/**************************STOP******************************/
