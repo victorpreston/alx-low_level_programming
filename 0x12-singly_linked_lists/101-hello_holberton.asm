@@ -1,21 +1,21 @@
-section.data
-	hello_msg db "Hello, Holberton
-	format db %s, 0
-section.text
-	global main
 extern printf
+
+section .text
+global main
+
 main:
-	; Save registers
-	push rbp 		; Saving the machine registers
-	mov rbp, rsp
+push rbp
 
-	; Clall Printf function to printout the text
-	lea rsi, [hello_msg]	; Calling printf function
-	lead rdi, [format]
-	call printf
+mov rdi, fmt
+mov rsi, msg
+mov rax, 0
+call printf
 
+pop rbp
 
-	; Restore registers and return
-	mov rsp, rbp
-	pop rbp				; Restoration of registers and return
-	ret				; This is an assembly language.
+mov rax, 0
+ret
+
+section .data
+msg: db "Hello, Holberton", 0
+fmt: db "%s", 10, 0
