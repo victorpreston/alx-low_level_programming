@@ -1,50 +1,35 @@
 #include "lists.h"
-#include <stdlib.h>
 
-/********START*******/
 /**
- *add_nodeint_end - adds_a_node at end of linked-list
- *@head:pointer: shows head of the list.
- *@n:integer: used as content
+ *add_nodeint_end - adds a node to the end of a linked list
+ *@head: pointer to the head of the list
+ *@n: number to be used as content
  *
  *
- *Return: shows address of new_node
- *
- * ALX PROJECTS
+ *Return: address of the newly added node
  */
+
 listint_t *add_nodeint_end(listint_t **head, const int n)
 {
-	/**
-	 * nod_s = new node.
-	 * pointer = *head.
-	 */
-	listint_t *nod_s;
-	listint_t *pointer = *head;
+	listint_t *new_node;
+	listint_t *cursor = *head;
 
-	nod_s = malloc(sizeof(listint_t));
-
-	/**check for empty list**/
-	if (nod_s != NULL)
+	new_node = malloc(sizeof(listint_t));
+	if (new_node != NULL)
 	{
-		nod_s->n = n;
-		nod_s->next = NULL;
+		new_node->n = n;
+		new_node->next = NULL;
 	}
 	else
 		return (NULL);
-	if (pointer != NULL)
+	if (cursor != NULL)
 	{
-		for (; pointer->next != NULL; pointer = pointer->next)
-		{
-			/**Loop to find the last node**/
-		}
-		nod_s->next = nod_s;
-	}
+		while (cursor->next != NULL)
+			cursor = cursor->next;
 
-	/**set head to new node**/
-	else
-	{
-		*head = nod_s;
+		cursor->next = new_node;
 	}
-	return (nod_s);
+	else
+		*head = new_node;
+	return (new_node);
 }
-/*********STOP********/
