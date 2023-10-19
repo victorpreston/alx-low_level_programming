@@ -1,58 +1,41 @@
+#include <stdlib.h>
+#include <string.h>
 #include "lists.h"
 
-/*****************************START*****************************/
-
 /**
- * add_node_end - adds a new node at the end of a list_t list
- * @head: pointer to the head of the list
- * @str: string to add to the new node in the list
+ * add_node_end - adds a new node at the end of a linked list
+ * @head: double pointer to the list_t list
+ * @str: string to put in the new node
  *
- * Return: the address of the new element, Null if failure occurs.
- *
- * ALX PROJECTS
+ * Return: address of the new element, or NULL if it failed
  */
-
 list_t *add_node_end(list_t **head, const char *str)
 {
-	list_t *nnode;
-	size_t len;
+	list_t *new;
+	list_t *temp = *head;
+	unsigned int len = 0;
 
-	/**Check if String is NULL**/
+	while (str[len])
+		len++;
 
-	if (str == NULL)
+	new = malloc(sizeof(list_t));
+	if (!new)
 		return (NULL);
-	nnode = malloc(sizeof(list_t));
-	if (nnode == NULL)
-		return (NULL);
-	
-	nnode->str = strdup(str);
 
-	/**Check**/
-
-	if (nnode->str == NULL)
-	{
-		free(nnode);
-		return (NULL);
-	}
-	for (len = 0; str[len]; len++)
-	{
-		/*******Find Length of String*******/
-	}
-	nnode->len = len;
-	nnode->next = NULL;
+	new->str = strdup(str);
+	new->len = len;
+	new->next = NULL;
 
 	if (*head == NULL)
 	{
-		*head = nnode;
+		*head = new;
+		return (new);
 	}
-	else if ((*head)->next == NULL)
-	{
-		(*head)->next = nnode;
-	}
-	else
-	{
-		/*Recursive Call*/
-		add_node_end(&((*head)->next), str);
-	}
-	return (nnode);
+
+	while (temp->next)
+		temp = temp->next;
+
+	temp->next = new;
+
+	return (new);
 }
