@@ -1,35 +1,40 @@
 #include "lists.h"
-
-/*******START*******/
 /**
- * find_listint_loop - loop contained ina linked_list
- * @head:pointer: shows head of the-list.
+ * find_listint_loop - Finds the loop contained in
+ *                     a listint_t linked list.
+ * @head: A pointer to the head of the listint_t list.
  *
- * Return: No! loop - NULL.
- *         else - loop_starts.
- *
- * ALX PROJECTS
+ * Return: If there is no loop - NULL.
+ *         Otherwise - the address of the node where the loop starts.
  */
 listint_t *find_listint_loop(listint_t *head)
 {
-	listint_t *tt = head, *rr = head;
+	listint_t *tortoise, *hare;
 
-	while (rr && rr->next)
+	if (head == NULL || head->next == NULL)
+		return (NULL);
+
+	tortoise = head->next;
+	hare = (head->next)->next;
+
+	while (hare)
 	{
-		tt = tt->next;
-		rr = (rr->next)->next;
-
-		if (tt == rr)
+		if (tortoise == hare)
 		{
-			tt == head;
-			while (tt != rr)
+			tortoise = head;
+
+			while (tortoise != hare)
 			{
-				tt == tt->next;
-				rr == rr->next;
+				tortoise = tortoise->next;
+				hare = hare->next;
 			}
-			return (tt);
+
+			return (tortoise);
 		}
+
+		tortoise = tortoise->next;
+		hare = (hare->next)->next;
 	}
+
 	return (NULL);
 }
-/********STOP**************/
