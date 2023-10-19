@@ -1,45 +1,30 @@
+#include <stdlib.h>
+#include <string.h>
 #include "lists.h"
-#include <stdio.h>
 
-/******************START*************************/
 /**
- *add_node: This will add a nod at start  of a list.
- *@head: shows/opens the head of the list.
- *@str: string to be added as node to list.
+ * add_node - adds a new node at the beginning of a linked list
+ * @head: double pointer to the list_t list
+ * @str: new string to add in the node
  *
- * Return:new element/ NULL if element fails.
- *
- * ALX PROJECTS
-*/
+ * Return: the address of the new element, or NULL if it fails
+ */
 list_t *add_node(list_t **head, const char *str)
 {
-	size_t len = 0;
-	list_t *added;
+	list_t *new;
+	unsigned int len = 0;
 
-	for (len = 0; str != NULL && str[len] != '\0'; len++)
-	{
-		/**********implement len untill NULL- terminal is reached*****/
-	}
+	while (str[len])
+		len++;
 
-	added = malloc(sizeof(list_t));
-	if (added == NULL)
+	new = malloc(sizeof(list_t));
+	if (!new)
 		return (NULL);
-	/**I will initialize and find Null if head is NUll**/
-	if (*head == NULL)
-		added->next = NULL;
-	else
-		added->next = *head;
 
-	/**Now I will try to add it**/
-	added->str = strdup(str);
-	added->len = len;
-	*head = added;
-
-	/**
-	 * This should now return head (*head)
-	 * If the code is successfull
-	 */
+	new->str = strdup(str);
+	new->len = len;
+	new->next = (*head);
+	(*head) = new;
 
 	return (*head);
 }
-/*********************STOP******************/
