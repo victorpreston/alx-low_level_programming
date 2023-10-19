@@ -1,59 +1,64 @@
 #include "lists.h"
 
-/***********START**********/
 /**
- * insert_nodeint_at_index - function- adds new_node to
- *                           list at a given position.
- * @head:pointer -shows address of the
- *        head-list.
- * @idx: list where the new
- *       indices start at 0(zero).
- * @n:integer: contained in the new node
+ * insert_nodeint_at_index - returns the nth node of a linked list
+ * @head: pointer to the head of the list
+ * @idx: index of the node to be added
+ * @n: content of the new node
  *
- * Return: function fails - NULL.
- *         else - addr of the new-node.
- *
- * ALX PROJECTS
+ * Return: the address of the node
  */
-
-
 listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 {
-	unsigned int nod_c = 0;
-	listint_t *nod_n;
-	listint_t *nod_current;
+	listint_t *new_node = NULL;
+	listint_t *previous_node = NULL;
+	unsigned int i = 0;
 
-	/****Check whether NULL****/
-	if (head == NULL)
+	new_node = malloc(sizeof(listint_t));
+	if (new_node == NULL || idx > listint_len(*head))
+	{
+		free(new_node);
 		return (NULL);
-	if (idx == 0)
-	{
-		nod_n = malloc(sizeof(listint_t));
-		if (nod_n == NULL)
-			return (NULL);
-		nod_n->n = n;
-		nod_n->next = *head;
-		*head = nod_n;
-		return (nod_n);
 	}
-	nod_current = *head;
-	while (nod_current != NULL)
+	new_node->n = n;
+	new_node->next = NULL;
+	while (head != NULL)
 	{
-		if (nod_c == idx -1)
+		if (i == idx)
 		{
-			nod_n = malloc(sizeof(listint_t));
-			if (nod_n == NULL)
-				return (NULL);
-			nod_n->n = n;
-			nod_n->next = nod_cuurent->next;
-			nod_current->next = nod_n;
-
-			return (nod_n);
+			if (i == 0)
+			{
+				new_node->next = *head;
+				*head = new_node;
+				return (new_node);
+			}
+			new_node->next = previous_node->next;
+			previous_node->next = new_node;
+			return (new_node);
 		}
-
-		nod_current = nod_current->next;
-		nod_c++;
+		else if ((i + 1) == idx)
+			previous_node = *head;
+		head = &((*head)->next);
+		i++;
 	}
-
 	return (NULL);
+}
+
+/**
+ * listint_len - counts the number of nodes in a linked list
+ * @h: head of the list
+ *
+ * Return: the number of elements
+ */
+size_t listint_len(const listint_t *h)
+{
+	const listint_t *cursor = h;
+	size_t count = 0;
+
+	while (cursor != NULL)
+	{
+		count += 1;
+		cursor = cursor->next;
+	}
+	return (count);
 }
