@@ -1,23 +1,19 @@
+#include <stdlib.h>
 #include "lists.h"
 
-/*****************************START******************************/
 /**
- * free_list - This function will free a list
- * @head: pointer to the list head
- *
- * ALX PROJECTS
+ * free_list - frees a linked list
+ * @head: list_t list to be freed
  */
-
 void free_list(list_t *head)
 {
-	list_t *now;
+	list_t *temp;
 
-	do {
-		now = head->next;
+	while (head)
+	{
+		temp = head->next;
 		free(head->str);
 		free(head);
-
-		head = now;
-	} while (head != NULL);
+		head = temp;
+	}
 }
-/****************************STOP*******************************/
