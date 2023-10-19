@@ -1,30 +1,25 @@
 #include "lists.h"
 
-/************START**************/
 /**
- * pop_listint - functions deletes head_for_the node
- *
- * @head:pointer: shows the first node in the list
- *
- * Return:check whether lists is empty on not
- * 	Returns 0 when null or data (n)	
- *
- * ALX PROJECTS
- */
+*pop_listint - deletes the head node of a linked list
+*@head: head of the list
+*
+*Return: the deleted node data
+*/
 
 int pop_listint(listint_t **head)
 {
-	listint_t *node_to_delete;
-	int node_data;
+listint_t *popped;
+int content;
 
-	if (*head == NULL)
-		return (0);
-	node_to_delete = *head;
-	node_data = (*head)->n;
-	*head = (*head)->next;
+if (*head == NULL)
+return (0);
 
-	free(node_to_delete);
+popped = *head;
+content = popped->n;
+free(popped);
 
-	return (node_data);
+*head = (*head)->next;
+return (content);
+
 }
-/************STOP****************/
