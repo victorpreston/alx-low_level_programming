@@ -1,52 +1,39 @@
 #include "lists.h"
-#include <stdio.h>
-#include <stdlib.h>
-
-
-/******START*****/
 /**
- * delete_nodeint_at_index - deletes a node at particular or an  index
- * @head:pointer: show the head of_list
- * @index: index of added nod.
+ * delete_nodeint_at_index - Deletes the node at a given
+ *                           index of a listint_t list.
+ * @head: A pointer to the address of the
+ *        head of the listint_t list.
+ * @index: The index of the node to be deleted - indices start at 0.
  *
- * Return:Node address
- *
- * ALX PROJECTS
+ * Return: On success - 1.
+ *         On failure - -1.
  */
-
-
 int delete_nodeint_at_index(listint_t **head, unsigned int index)
 {
-	listint_t *temp;
-	listint_t *node_c = *head;
-	unsigned int nod;
+	listint_t *tmp, *copy = *head;
+	unsigned int node;
 
-	/*****Check if null*****/
-	if (node_c == NULL)
-		return (0);
-	/**
-	 * On success - 1.
-	 * On failure - 0
-	 */
+	if (copy == NULL)
+		return (-1);
+
 	if (index == 0)
 	{
 		*head = (*head)->next;
-		free(node_c);
+		free(copy);
 		return (1);
 	}
-	for (nod = 0; nod < index - 1; nod++)
+
+	for (node = 0; node < (index - 1); node++)
 	{
-		if (node_c->next == NULL)
+		if (copy->next == NULL)
 			return (-1);
-		node_c = node_c->next;
+
+		copy = copy->next;
 	}
 
-	/***Compare***/
-	temp = node_c->next;
-	node_c->next = temp->next;
-	free(temp);
-	/****return****/
-
+	tmp = copy->next;
+	copy->next = tmp->next;
+	free(tmp);
 	return (1);
 }
-/****************STOP***************/
