@@ -4,9 +4,6 @@
 
 >Learning C right now, been wanting to get on this. It's been fun so far !!.
 
-<p align="center">
-  <img src="https://i.postimg.cc/rprHShJ1/C-compilation-process.gif" />
-</p>
 
 ## About
 
@@ -14,8 +11,6 @@
 - All main.c files are prewritten by the school. We build functions that produce a specific output while also taking into consideration edge cases.
 
 
-
-- C is fun but its not that easy, so I have some [notes](./notes.md) that will actually show you the journey and thought process.
 
 ## Resource
 
