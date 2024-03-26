@@ -36,7 +36,7 @@
 - [0x0E](./0x0E-structures_typedef) : Structures, typedef.
 - [0x0F](./0x0F-function_pointers) : Function pointers.
 - [0x10](./0x10-variadic_functions) : Variadic functions.
-- [0x11](https://github.com/iAmG-r00t/printf) : Write our own printf project.
+- [0x11](https://github.com/victorpreston/printf) : Write our own printf project.
 - [0x12](./0x12-singly_linked_lists) : Singly linked lists.
 - [0x13](./0x13-more_singly_linked_lists) : More singly linked lists.
 - [0x14](./0x14-bit_manipulation) : Bit manipulation.
