@@ -42,6 +42,6 @@
 - [0x14](./0x14-bit_manipulation) : Bit manipulation.
 - [0x15](./0x15-file_io) : File I/O.
 - [0x1C](./0x1C-makefiles) : Makefiles.
-- [0x1D](https://github.com/iAmG-r00t/binary_trees) : Binary trees.
+- [0x1D](https://github.com/victorpreston/binary_trees) : Binary trees.
 - [0x1E](./0x1E-search_algorithms) : Search Algorithms.
 
